@@ -7,6 +7,16 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Create an app and add two Button elements and a TextView to the layout.
+ * Manipulate each element in the ConstraintLayout to constrain them to the margins and other
+ * elements.
+ * Change UI element attributes.
+ * Edit the app's layout in XML.
+ * Extract hardcoded strings into string resources.
+ * Implement click-handler methods to display messages on the screen when the user taps each Button.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private int mCount = 0;
