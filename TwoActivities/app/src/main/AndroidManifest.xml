@@ -9,12 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SecondActivity">
+        <activity android:name=".SecondActivity"
             android:label = "Second Activity"
-            <!-- With the parentActivityName attribute, you indicate that the main activity is the
-            parent of the second activity. This relationship is used for Up navigation in your app:
-            the app bar for the second activity will have a left-facing arrow so the user can
-            navigate "upward" to the main activity. -->
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

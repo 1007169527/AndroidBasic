@@ -1,0 +1,4 @@
+<!-- With the parentActivityName attribute, you indicate that the main activity is the
+            parent of the second activity. This relationship is used for Up navigation in your app:
+            the app bar for the second activity will have a left-facing arrow so the user can
+            navigate "upward" to the main activity. -->
