@@ -34,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
         mReplyHeadTextView = findViewById(R.id.text_header_reply);
         mReplyTextView = findViewById(R.id.text_message_reply);
         Log.d(LOG_TAG, "onCreate");
+        if (savedInstanceState != null) {
+            if(savedInstanceState.getBoolean("reply_visible")) {
+                mReplyHeadTextView.setVisibility(View.VISIBLE);
+                mReplyTextView.setText(savedInstanceState.getString("reply_text"));
+                mReplyTextView.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     public void launchSecondActivity(View view) {
@@ -118,4 +125,38 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d(LOG_TAG, "onDestroy");
     }
+
+    /**
+     * The state of each Activity is stored as a set of key/value pairs in a Bundle object called the
+     * Activity instance state. The system saves default state information to instance state Bundle
+     * just before the Activity is stopped, and passes that Bundle to the new Activity instance to restore.
+     *
+     * To keep from losing data in an Activity when it is unexpectedly destroyed and recreated,
+     * you need to implement the onSaveInstanceState() method. The system calls this method on your
+     * Activity (between onPause() and onStop()) when there is a possibility the Activity may be
+     * destroyed and recreated.
+     *
+     * You may have noticed that rotating the device does not affect the state of the second Activity at all.
+     * This is because the second Activity layout and state are generated from the layout and the Intent
+     * that activated it. Even if the Activity is recreated, the Intent is still there and the data in that
+     * Intent is still used each time the onCreate() method in the second Activity is called.
+     *
+     * In addition, you may notice that in each Activity, any text you typed into message or
+     * reply EditText elements is retained even when the device is rotated. This is because the
+     * state information of some of the View elements in your layout are automatically saved
+     * across configuration changes, and the current value of an EditText is one of those cases.
+     */
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mReplyHeadTextView.getVisibility() == View.VISIBLE) {
+            outState.putBoolean("reply_visible", true);
+            outState.putString("reply_text",mReplyTextView.getText().toString());
+        }
+    }
+
+
+
+
 }
